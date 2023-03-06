@@ -1,8 +1,3 @@
-/*Este laboratorio consta de un display de 7 segmentos, 
-que junto con dos pulsadores, hacen un contador de forma ascendente o de forma desendente, 
-dependiendo de cual botón sea pulsado.*/
-
-
 // Definición de los pines para el display de 7 segmentos
 const int a = 2;
 const int b = 3;
@@ -18,7 +13,7 @@ const int boton2 = 10;
 
 // Declaración de variables
 int contador = 0;
-int direccion = 1; // Indica la dirección del contador (1: de 0 a 9, -1: de 9 a 0)
+int direccion = 1; 
 
 void setup() {
   // Configuración de los pines del display de 7 segmentos como salidas
@@ -34,12 +29,12 @@ void setup() {
   pinMode(boton1, INPUT_PULLUP);
   pinMode(boton2, INPUT_PULLUP);
 
-  // Inicialización del puerto serial para mostrar los números ingresados por el usuario
+  // Inicialización del puerto serial 
   Serial.begin(9600);
 }
 
 void loop() {
-  // Lectura de los botones y actualización del contador y la dirección
+  // Lectura de los botones
   if (digitalRead(boton1) == LOW) {
     direccion = 1;
     contador = (contador + direccion) % 10;
@@ -50,7 +45,7 @@ void loop() {
     delay(1000);
   }
 
-  // Mostrar el número actual del contador en el display de 7 segmentos
+  // Mostrar el número actual del contador en el display
   mostrarNumero(contador);
 
   // Leer el número ingresado por el usuario a través del monitor serial
